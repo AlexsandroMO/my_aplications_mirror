@@ -1,0 +1,50 @@
+h4{
+    text-align: center;
+}
+
+.content-box{
+ 
+    padding-left: 40rem;
+    padding-right: 40rem;
+    align-items: center;
+}
+
+#img-home{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+/* .aling-div{
+  width: 98%;
+} */
+
+.table-aling{
+    border: 10px;
+}
+
+#td-alinha{
+    text-align: right;
+}
+
+.fa-trash-alt{
+    color: #b2293e;
+}
+
+.fa-folder-plus{
+    color: #3165fa;
+}
+
+.fa-cloud-upload-alt{
+    color: #4dbd75;
+}
+
+.fa-cloud-download-alt{
+    color: #b2293e;
+}
+
+.fa-cubes{
+    color: #f67f61;
+}
+
+#spread-sheets{
+    color: #058ab5;
+}

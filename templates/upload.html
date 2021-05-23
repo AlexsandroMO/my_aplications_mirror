@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-box">
+  <h3>Download Tables</h3>
+    <img src="http://www.centrohermes.com.br/wp-content/uploads/2018/05/GPJ.jpg" alt="Intro Site" width=480 height=250 id="img-home">
+
+  <div class="aling-div">
+    <a href="/download" class="link_thumb" style="color: #848484;">
+        <button type="submit" class="btn btn-secondary tx-tfm">Download Table</button>
+    </a>
+        <ul class="list-group">
+            {% for table in tables %}
+                <li lass="list-group-item">{{ table|safe }}</li>
+            {% endfor %}
+        </ul>
+  </div>
+</div>
+
+{% endblock content %}
+

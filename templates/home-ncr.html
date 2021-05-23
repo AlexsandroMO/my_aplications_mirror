@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div class="content-box">
+    <h3>Welcome to Spreadsheets Analysis</h3>
+        <img src="http://www.centrohermes.com.br/wp-content/uploads/2018/05/GPJ.jpg" alt="Intro Site" width=480 height=250 id="img-home">
+    <div class="aling-div">
+            <ul class="list-group">
+                {% if status == true%}
+                <li class="list-group-item"><a href="/userarea_loged" class="link_thumb">
+                    <table class="table table-striped">
+                        <tr>
+                            <td><i class="fas fa-folder-plus fa-2x"></i></td>
+                            <td style="text-align: right;"><strong>NCR / RAI / CC_REV</strong></td>
+                        </tr>
+                    </table>
+                </a></li>
+                {% else %}
+                <li class="list-group-item"><a href="/login" class="link_thumb">
+                    <table class="table table-striped">
+                        <tr>
+                            <td><i class="fas fa-folder-plus fa-2x"></i></td>
+                            <td style="text-align: right;"><strong>NCR / RAI / CC_REV</strong></td>
+                        </tr>
+                    </table>
+                </a></li>
+                {% endif %}
+                <li class="list-group-item"><a href="/delite_arq" class="link_thumb">
+                    <table class="table table-striped">
+                        <tr>
+                            <td><i class="fas fa-trash-alt fa-2x"></i></td>
+                            <td style="text-align: right;"><strong>Deltar</strong></td>
+                        </tr>
+                    </table>
+                </a></li>
+            </ul>
+    </div>
+</div>
+
+
+{% if status == true%}
+<a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+{% else %}
+<a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+{% endif %}
+
+{% endblock content %}

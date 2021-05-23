@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-box">
+    <h3>Welcome to Spreadsheets Analysis</h3>
+        <img src="http://www.centrohermes.com.br/wp-content/uploads/2018/05/GPJ.jpg" alt="Intro Site" width=480 height=250 id="img-home">
+    <div class="aling-div">
+            <ul class="list-group">
+
+                <li class="list-group-item">
+                <h3>Spreadsheet Upload</h3>
+                <form action="/handleUpload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="photo" /> <!--multiple="multiple"-->
+                    <input type="submit" class="btn btn-secondary" value="Enviar" />
+                </form>
+                </li>
+            </ul>
+    </div>
+</div>
+
+{% if status == true%}
+<a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+{% else %}
+<a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+{% endif %}
+
+
+{% endblock content %}

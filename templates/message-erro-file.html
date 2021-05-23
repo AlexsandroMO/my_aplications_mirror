@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+<div class="content-box">
+  <h3>Ops,</h3>
+      <img src="http://www.centrohermes.com.br/wp-content/uploads/2018/05/GPJ.jpg" alt="Intro Site" width=480 height=250 id="img-home">
+  <div class="aling-div">
+    {% if status_files_len == 2 %}
+      <h4>Os Arquivos <br><strong>[{{status_files[0]}}] e [{{status_files[1]}}]</strong>, <br>Não se Encontram Cadastrados no Sistema.</h4>
+      <h4>Favor Faça o Upload dos Arquivos e Tente Novamente.</h4>
+    {% else %}
+    <h4>O Arquivo<strong>[{{status_files[0]}}]</strong>, Não se Encontra <br>Cadastrado no Sistema.</h4>
+    <h4>Favor Faça o Upload do Arquivo e Tente Novamente.</h4>
+      {% endif %}
+  </div>
+</div>
+
+{% if status == true%}
+<a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+{% else %}
+<a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+{% endif %}
+
+{% endblock content %}
