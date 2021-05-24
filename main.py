@@ -48,8 +48,9 @@ def userarea_loged():
 
 @app.route("/fileform")
 def fileform():
+    status = Var_State.login_acess
     title_status = 'Upload | NCR'
-    return render_template('fileform.html', title_status=title_status)
+    return render_template('fileform.html', status=status, title_status=title_status)
 
 
 @app.route("/login")
@@ -59,7 +60,7 @@ def login():
 
 @app.route("/create_table")
 def create_table():
-
+    status = Var_State.login_acess
     pasta = './static'
     status_files, status_files1, status_files2 = [],[],[]
     for diretorio in os.walk(pasta):
@@ -80,11 +81,11 @@ def create_table():
 
     status_files_len = len(status_files)
     if status_files_len > 0:
-        return render_template('message-erro-file.html', status_files=status_files, status_files_len=status_files_len)
+        return render_template('message-erro-file.html', status_files=status_files, status_files_len=status_files_len, status=status)
 
     else:
         df = db.create_list()
-        return render_template('upload.html', df=df, tables=[df.to_html(classes='data')], titles=df.columns.values)
+        return render_template('upload.html',  status=status, df=df, tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 @app.route("/logout")
 def logout():
@@ -93,6 +94,7 @@ def logout():
 
 @app.route("/download")
 def download():
+    status = Var_State.login_acess
     return redirect(url_for('static', filename='NCR_RAI_LIBERAR.xlsx'))
 
 @app.route('/userarea', methods=['POST', 'GET'])
@@ -149,7 +151,8 @@ def delite_arq():
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    status = Var_State.login_acess
+    return render_template('register.html', status=status)
 
 
 @app.route('/erro')

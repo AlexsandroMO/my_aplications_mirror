@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
 
-
-<div class="content-box">
-  <h3>Upload and Spreadsheet Generation</h3>
-    <img src="http://www.centrohermes.com.br/wp-content/uploads/2018/05/GPJ.jpg" alt="Intro Site" width=480 height=250 id="img-home">
+<div class="row">
+  <div class="content-box">
+    <h3>Bem Vidos ao Ambiente de Análise de Dados</h3>
+    <img src="{{ url_for('static', filename='img/Spreadsheets.jpg') }}" alt="Intro Site" width=700 height=350 id="img-home">
   <div class="aling-div">
     <ul class="list-group">
       <li class="list-group-item"><a href="/fileform" class="link_thumb">
@@ -24,13 +24,19 @@
         </table>
     </a></li>
   </div>
+
+  <div class="aling-back">
+    {% if status == true%}
+        <a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+    {% else %}
+        <a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+    {% endif %}
+  </div>
+
 </div>
 
 
-{% if status == true%}
-<a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
-{% else %}
-<a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
-{% endif %}
+
+
 
 {% endblock content %}

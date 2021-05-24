@@ -1,16 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
-  
-<div class="content-box">
-    <h3>Upload and Spreadsheet Generation</h3>
-      <img src="http://www.centrohermes.com.br/wp-content/uploads/2018/05/GPJ.jpg" alt="Intro Site" width=480 height=250 id="img-home">
+
+<div class="row">
+    <div class="content-box">
+    <h3 stile="test">Bem Vidos ao Ambiente de Análise de Dados</h3>
+        <img src="{{ url_for('static', filename='img/Spreadsheets.jpg') }}" alt="Intro Site" width=700 height=350 id="img-home">
   <div class="aling-div">
           <ul class="list-group">
               <li class="list-group-item"><a href="/fileform" class="link_thumb">
                   <table class="table table-striped">
                       <tr>
                           <td><i class="fas fa-cloud-upload-alt fa-2x"></i></td>
-                          <td style="text-align: right;"><strong>Upload</strong></td>
+                          <td style="text-align: right;"><strong>UPLOAD</strong></td>
                       </tr>
                   </table>
               </a></li>
@@ -19,12 +20,21 @@
                   <table class="table table-striped">
                       <tr>
                           <td><i class="fas fa-cubes fa-2x"></i></td>
-                          <td style="text-align: right;"><i class="far fa-clipboard"></i> <strong>Gerar Planilha <i class="far fa-clipboard"></i></strong> 
+                          <td style="text-align: right;"><i class="far fa-clipboard"></i> <strong>ANALISAR <i class="far fa-clipboard"></i></strong> 
                       </tr>
                   </table>
               </a></li>
           </ul>
-  </div>
+        </div>
+
+        <div class="aling-back">
+            {% if status == true%}
+                <a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+            {% else %}
+                <a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+            {% endif %}
+        </div>
+
 </div>
 
 

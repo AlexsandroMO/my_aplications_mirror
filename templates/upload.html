@@ -1,20 +1,34 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<div class="content-box">
-  <h3>Download Tables</h3>
-    <img src="http://www.centrohermes.com.br/wp-content/uploads/2018/05/GPJ.jpg" alt="Intro Site" width=480 height=250 id="img-home">
+<div class="row">
+  <div class="content-box">
+  <h3>Download de Planilhas</h3>
+    <img src="{{ url_for('static', filename='img/analise-dados.jpg') }}" alt="Intro Site" width=700 height=400 id="img-home">
 
   <div class="aling-div">
     <a href="/download" class="link_thumb" style="color: #848484;">
         <button type="submit" class="btn btn-secondary tx-tfm">Download Table</button>
     </a>
-        <ul class="list-group">
-            {% for table in tables %}
-                <li lass="list-group-item">{{ table|safe }}</li>
-            {% endfor %}
-        </ul>
+    <br>
+    <br>
+      <ul class="list-group">
+        {% for table in tables %}
+          <li class="list-group-item-dowload">
+            {{ table | safe }}               
+          </li>
+        {% endfor %}
+      </ul>
   </div>
+
+  <div class="aling-back">
+    {% if status == true%}
+        <a href="/userarea_loged"><i class="fas fa-angle-double-left fa-3x"></i></a>
+    {% else %}
+        <a href="/home_ncr"><i class="fas fa-angle-double-left fa-3x"></i></a>
+    {% endif %}
+  </div>
+
 </div>
 
 {% endblock content %}
