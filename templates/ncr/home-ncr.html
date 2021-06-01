@@ -3,31 +3,31 @@
 
 <div class="row">
     <div class="content-box">
-        <h3 stile="test">Bem Vidos ao Ambiente de Análise de Dados</h3>
+        <h3 stile="test">Bem Vidos ao Ambiente de Análise RAI/CC_REV</h3>
             <img src="{{ url_for('static', filename='img/dados_pizza.jpeg') }}" alt="Intro Site" width=700 height=400 id="img-home">
 
         <div class="aling-div">
             <ul class="list-group">
                 {% if status == true%}
-                <li class="list-group-item"><a href="/userarea_loged" class="link_thumb">
+                <li class="list-group-item"><a href="/userarea_loged">
                     <table class="table table-striped">
                         <tr>
                             <td><i class="fas fa-folder-plus fa-2x"></i></td>
-                            <td style="text-align: right;"><strong>NCR / RAI / CC_REV</strong></td>
+                            <td style="text-align: right;"><strong>RAI / CC_REV</strong></td>
                         </tr>
                     </table>
                 </a></li>
                 {% else %}
-                <li class="list-group-item"><a href="/login" class="link_thumb">
+                <li class="list-group-item"><a href="/login">
                     <table class="table table-striped">
                         <tr>
                             <td><i class="fas fa-folder-plus fa-2x"></i></td>
-                            <td style="text-align: right;"><strong>NCR / RAI / CC_REV</strong></td>
+                            <td style="text-align: right;"><strong>RAI / CC_REV</strong></td>
                         </tr>
                     </table>
                 </a></li>
                 {% endif %}
-                <li class="list-group-item"><a href="/delite_arq" class="link_thumb">
+                <li class="list-group-item"><a href="/delite_arq">
                     <table class="table table-striped">
                         <tr>
                             <td><i class="fas fa-trash-alt fa-2x"></i></td>

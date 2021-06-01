@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="container">
+    <div class="ajust-div">
+        <h1>Bem vindo ao Jogo da Forca</h1>
+
+        <div class="col-12 col-md-12">
+            <div class="head-game">
+                <h2>Escolha como quer jogar</h2>
+            </div>
+            <form action = "/game_choise" method = "POST"> 
+                <div class="alinha-choice">
+                    <select name="select" id="select" name="type-game" class="form-control">
+                        <option value="0">Como Quer Jogar?</option>
+                        <option value="1">Jogar Contra o Computador</option>
+                        <option value="2">Jogar Contra Um Adversário</option>
+                    </select>
+                    <br>
+                    <input type="submit" name="type-game" value="OK" class="btn btn-secondary"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

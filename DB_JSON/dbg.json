@@ -1,0 +1,11 @@
+{"_default": {
+    "1": {"word": "CADEIRA", "dip": "OBJETO"},
+    "2": {"word": "MESA", "dip": "OBJETO"},
+    "3": {"word": "GARRAFA", "dip": "OBJETO"},
+    "4": {"word": "COPO", "dip": "OBJETO"},
+    "5": {"word": "COLHER", "dip": "OBJETO"},
+    "6": {"word": "GATO", "dip": "ANIMAL"},
+    "7": {"word": "CAVALO", "dip": "ANIMAL"},
+    "8": {"word": "OVELHA", "dip": "ANIMAL"}
+            }
+}

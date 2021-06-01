@@ -20,7 +20,8 @@ https://www.devmedia.com.br/twitter-bootstrap-aumentando-sua-produtividade/24967
     <link rel="styleshet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles-coin.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles-games.css') }}">
 
 
 </head>
@@ -39,10 +40,14 @@ https://www.devmedia.com.br/twitter-bootstrap-aumentando-sua-produtividade/24967
         </button>
         <div class="collapse navbar-collapse" id="navbarToggle">
           <div class="navbar-nav mr-auto">
-            {% if status == true%}
-              <a class="nav-item nav-link" href="/userarea_loged">Home</a>
-            {% else %}
+            {% if title_status == 'Home | NCR' or title_status == 'Upload | NCR' or title_status == 'Login | NCR'%}
               <a class="nav-item nav-link" href="/home_ncr">Home</a>
+            {% elif title_status == 'COINS' %}
+              <a class="nav-item nav-link" href="/index_coin">Home</a>
+            {% elif title_status == 'HangmanGame' %}
+              <a class="nav-item nav-link" href="/index_game">Home</a>
+            {% else %}
+              <a class="nav-item nav-link" href="/">Home</a>
             {% endif %}
           </div>
 

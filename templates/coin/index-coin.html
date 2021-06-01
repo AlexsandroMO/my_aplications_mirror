@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="lista-item">
+  <h2>Cotação Agora</h2>
+    <div class="ul-list">
+      <ul class="table-list">
+        <li id="line-a" class="line-head">MOEDA</li>
+        <li id="line-b" class="line-head">VALOR</li>
+        <li id="line-c" class="line-head">DATA</li>
+      </ul>
+      
+      {% for item in data_table %}
+        <ul class="table-list">
+          <li id="line-a" class="line-li">{{ item.0 }}</li>
+          <li id="line-b" class="line-li">{{ item.1 }}</li>
+          <li id="line-c" class="line-li">{{ item.2 }}</li>
+        </ul>
+      {% endfor %}
+    </div>
+
+  <br>
+
+  <a>{{Ass}}</a>
+  <br>
+  <a>{{day_week}} {{day}} de {{month}} de {{year}}</a>
+
+</div>
+
+{% endblock content %}
+      
+
+
+
+
+
+
+<!-- 
+ -->

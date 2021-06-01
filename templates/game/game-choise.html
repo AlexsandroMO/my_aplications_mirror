@@ -1,0 +1,33 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div id="container">
+    <div class="ajust-div">
+        <div class="col-12 col-md-12">
+            <div class="head-game">
+                <h1>Jogo da Forca</h1>
+                <h3>Escolha a Palavra</h3>
+            </div>
+            <form action = "/result_game" method = "POST"> 
+                <div class="alinha-choice">
+                    <label for="pass">Digite a Palavra Secreta: </label>
+                    <input type="password" name="word" class="choice-right">
+                    <br>
+                    <label>Digite a Dica: </label>
+                    <input type="text" name="var-dip" class="choice-right"/>
+                    <input type="submit" name="type-game" value="OK" class="btn btn-secondary" id="bt-ok"/>
+                </div>
+            </form>
+            </div>
+
+            <div class="alinha-bt2">
+                <a href="/"><button type="button" class="btn btn-secondary">Sair</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

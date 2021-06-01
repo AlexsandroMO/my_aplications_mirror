@@ -1,0 +1,40 @@
+
+{% extends "layout.html" %}
+{% block content %}
+
+
+<div id="container">
+    <div class="ajust-div">
+        <div class="col-12 col-md-12">
+            <div class="head-game">
+                <h2>Jogo da Forca</h2>
+                <h3>Descubra a Palavra</h3>
+            </div>
+            <div class="head-game2">
+                <p><b>{{var_dip}}</b> com {{len_var_word}} Letras</p>
+            </div>
+            <div class="letter-readed">
+                <div class="alinha-word">
+                    {% for w in word %}
+                        <div class="alinha-table"><p class="p-alinha">{{ w.0 }}</p></div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="alinha-bt">
+                <form action = "/result_game_play" method = "POST"> 
+                    <label>Digite a Letra: </label>
+                    <input type="text" name="read-word" value="{{word}}" hidden/>
+                    <input type="text" name="var-secret" value="{{var_secret}}" hidden/>
+                    <input type="text" name="var-dip" value="{{var_dip}}" hidden/>
+                    <input type="text" name="letter" class="alinha-input"/>
+                    <input type="submit" name="type-game" value="OK" class="btn btn-secondary"/>
+                </form>
+            </div>
+            <br>
+            <a href="/"><button type="button" class="btn btn-secondary">Sair</button></a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

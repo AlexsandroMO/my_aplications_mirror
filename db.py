@@ -15,6 +15,7 @@ db = TinyDB('DB_JSON/db.json')
 def registerDB(firstname, lastname, email1, password1):
     return db.insert({'FIRST_NAME':firstname,'LAST_NAME':lastname,'EMAIL':email1,'PASSWORD':password1})
 
+
 def readDB(email, password):
     result = False
     for i in db.all():
@@ -105,11 +106,16 @@ def create_list():
     LIBERAR = NCR_RAI_LIBERAR[NCR_RAI_LIBERAR['NCR_RAI'] != '']
     NCR_RAI_Libera = LIBERAR.groupby(['NCR_RAI', 'STATUS']).count()
 
-    print('\n\nRealizado!')
+    if len(NCR_RAI_Libera) == 0:
+        print('OPS')
+        NCR_RAI = pd.DataFrame(data=[[0,'Vazio']],columns=['NCR_RAI','STATUS'])
+        msg_df = 'Não Foram Encontradas RAIs para Deliberação!'
+        return [NCR_RAI, msg_df]
 
-    NCR_RAI_Libera.to_excel('static/NCR_RAI_LIBERAR.xlsx', 'NCR_RAI_LIBERAR')
-
-    return NCR_RAI_Libera
+    else:
+        NCR_RAI_Libera.to_excel('static/NCR_RAI_LIBERAR.xlsx', 'NCR_RAI_LIBERAR')
+        msg_df = 'RAIs Encontradas!'
+        return [NCR_RAI_Libera, msg_df]
 
 
 
