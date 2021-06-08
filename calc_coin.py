@@ -104,3 +104,23 @@ def today_is(hj):
   dates = [day_week, day, year, month]
 
   return dates
+
+
+def dollar_last_days(df):
+
+  var_readed = [df[['VALOR','DATA_COTA']].loc[0]['VALOR'], df[['VALOR','DATA_COTA']].loc[0]['DATA_COTA']]
+  df_dolar = pd.read_excel('DB_JSON/DF_DOLAR.xlsx')
+
+  df_dolar.drop('Unnamed: 0', axis=1, inplace=True)
+
+  dados2 = [var_readed]
+  header2 = ['VALOR','DATA_COTA']
+  df2 = pd.DataFrame(data=dados2, columns=header2, index=[len(df_dolar)])
+  df2
+
+  new = df_dolar.append(pd.concat([df2]))
+  print(new)
+  new.to_excel('DB_JSON/DF_DOLAR.xlsx')
+
+
+
