@@ -23,7 +23,8 @@ ul {
 
 
 h2{
-  padding-bottom: 20px;
+  padding-top: 80px;
+  padding-bottom: 10px;
 }
 
 .lista-item{
@@ -31,7 +32,7 @@ h2{
 }
 
 .ul-list{
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .line-head{
@@ -62,4 +63,11 @@ h2{
 
 .active {
   background-color: #4CAF50;
+}
+
+#chart{
+  float: right;
+  position: relative;
+  top: -330px;
+  right: 200px;
 }

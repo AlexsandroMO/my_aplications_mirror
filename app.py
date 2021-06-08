@@ -18,6 +18,8 @@ import calc_coin as coins
 from datetime import date, datetime
 from tinydb import TinyDB, Query, where
 import random
+#from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+#from matplotlib.figure import Figure
 
 
 # ==================================
@@ -27,7 +29,9 @@ class Var_State():
     def __init__(self, login_acess):
         self.login_acess = login_acess
 
+
 Var_State.login_acess = False
+
 
 @app.route("/")
 @app.route("/home")
@@ -90,7 +94,7 @@ def create_table():
         return render_template('ncr/message-erro-file.html', status_files=status_files, status_files_len=status_files_len, status=status)
 
     else:
-        df = db.create_list()
+        df = db_ncr.create_list()
         return render_template('ncr/upload.html', msg_df=df[1], status=status, df=df[0], tables=[df[0].to_html(classes='data')], titles=df[0].columns.values)
 
 @app.route("/logout")
@@ -115,15 +119,12 @@ def userarea():
 
         read_register = db_ncr.readDB(email, password)
 
-        #print('>>>>>>>>>>', read_register)
-
         if email == '' or password == '':
             return f"""
             <h2>Atenção, Todos os campos precisam ser preenchidos... :( </h2><br><br><br>
             <p><a href="/login"><img src="https://image.flaticon.com/icons/png/512/54/54906.png" alt="some text" width=40 height=40></p>
 
             """
-        #if email == email_.lower() and password == password_:
         if read_register[0] == True:
             Var_State.login_acess = True
 
@@ -208,7 +209,7 @@ def handleFileUpload():
         if photo.filename != '':
             print('foi')
             photo.save(os.path.join('static/', photo.filename))
-    return redirect(url_for('home_ncr'))
+    return redirect(url_for('userarea_loged'))
 
 #------------------------------------------------------------------
 #APPs
@@ -239,7 +240,50 @@ def index_coin():
     for a in range(len(df['VALOR'])):
         data_table.append([df['MOEDA'].loc[a], df['VALOR'].loc[a], df['DATA_COTA'].loc[a]])
 
-    return render_template('coin/index-coin.html', title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass, data_table=data_table, tables=[df.to_html(classes='data')], titles=df.columns.values)
+    #-------------------------------
+    lista_dolar = [5.07, 5.10, 7.38, 5.35, 5.30]
+    lista_data = ['29/05/2021', '30/05/2021', '31/05/2021', '01/06/2021', '02/06/2021']
+
+    new_data = []
+    for i in range(len(lista_dolar)):
+        new_data.append([lista_data[i],lista_dolar[i]])
+
+    #-------------------------------
+
+
+    return render_template('coin/index-coin.html', new_data=new_data, title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass, data_table=data_table, tables=[df.to_html(classes='data')], titles=df.columns.values)
+
+
+@app.route("/coin_show")
+def coin_show():
+
+    title_status= 'COINS'
+    lista = requests.get('https://economia.awesomeapi.com.br/all')
+    cotation = json.loads(lista.text)
+
+    df = coins.cotation_all(cotation)
+    now = date.today()
+    list_today = coins.today_is(now)
+
+    hj = now
+
+    day_week = list_today[0]
+    day =  list_today[1]
+    year =  list_today[2]
+    month = list_today[3]
+
+    Ass = 'A.M.O COTACÕES'
+
+    lista_dolar = [5.07, 5.10, 7.38, 5.35, 5.30]
+    lista_data = ['29/05/2021', '30/05/2021', '31/05/2021', '01/06/2021', '02/06/2021']
+
+    new_data = []
+    for i in range(len(lista_dolar)):
+        new_data.append([lista_data[i],lista_dolar[i]])
+
+    print('>>>',new_data, end=' ')
+
+    return render_template('coin/coin-show.html', new_data=new_data, title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass)
 
 
 
@@ -366,5 +410,5 @@ def loose():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8000, debug=True)
-    #app.run(debug=True)
+    #app.run(host='127.0.0.1', port=8000, debug=True)
+    app.run(debug=True)
