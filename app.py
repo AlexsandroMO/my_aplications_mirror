@@ -309,7 +309,7 @@ def atualyze_table():
         data_table.append([df['MOEDA'].loc[a], df['VALOR'].loc[a], df['DATA_COTA'].loc[a]])
 
     #-------------------------------
-    lista_dolar = [5.07, 5.10, 7.38, 5.35, 5.30]
+    lista_dolar = [5.11, 5.09, 5.12, 5.08, 5.07]
     lista_data = ['29/05/2021', '30/05/2021', '31/05/2021', '01/06/2021', '02/06/2021']
 
     new_data = []

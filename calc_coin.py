@@ -108,7 +108,7 @@ def today_is(hj):
 
 def dollar_last_days(df):
 
-  var_readed = [df[['VALOR','DATA_COTA']].loc[0]['VALOR'], df[['VALOR','DATA_COTA']].loc[0]['DATA_COTA']]
+  var_readed = [df['VALOR'].loc[0], df['DATA_COTA'].loc[0][:10]]
   df_dolar = pd.read_excel('DB_JSON/DF_DOLAR.xlsx')
 
   df_dolar.drop('Unnamed: 0', axis=1, inplace=True)
@@ -116,11 +116,22 @@ def dollar_last_days(df):
   dados2 = [var_readed]
   header2 = ['VALOR','DATA_COTA']
   df2 = pd.DataFrame(data=dados2, columns=header2, index=[len(df_dolar)])
-  df2
 
   new = df_dolar.append(pd.concat([df2]))
+  list_test = []
+  for i in range(len(new['DATA_COTA'])):
+    print(new['DATA_COTA'].loc[i])
+    if var_readed[1] == new['DATA_COTA'].loc[i]:
+      print("Don't enter")
+      list_test.append('x')
+    else:
+      print("Enter")
+
+  print('ok', len(list_test), len(new))
+
+  if len(list_test) < 1:
+    new.to_excel('DB_JSON/DF_DOLAR.xlsx')
+    print('entrou')
+  
   print(new)
-  new.to_excel('DB_JSON/DF_DOLAR.xlsx')
-
-
 
