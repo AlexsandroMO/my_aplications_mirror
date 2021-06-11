@@ -1,3 +1,4 @@
+'''
 from time import sleep
 import os
 
@@ -23,10 +24,28 @@ def clocktime(hour, min, seg):
   hour = 0
 
 
-hour = int(input('HORA: '))
-min = int(input('MIN: '))
+hour = int(input('HORA: ')) - 1
+min = int(input('MIN: ')) - 1
 seg = int(input('SEG: '))
 
 clock = True
 while clock == True:
   clocktime(hour, min, seg)
+'''
+
+'''
+from time import sleep
+import os
+
+temp = int(input('Set_Time: '))
+print('TMER BOMB')
+
+cont = temp
+for i in range(0, temp + 1):
+  print(cont)
+  cont -= 1
+  sleep(1)
+  os.system('cls')
+
+print('BUM!!!!!\n\n')
+'''
