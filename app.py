@@ -234,54 +234,30 @@ def index_coin():
 
     Ass = 'A.M.O COTACÕES'
 
+    coins.dollar_last_days(df)
+
     data_table = []
     for a in range(len(df['VALOR'])):
         data_table.append([df['MOEDA'].loc[a], df['VALOR'].loc[a], df['DATA_COTA'].loc[a]])
 
     #-------------------------------
-    lista_dolar = [5.07, 5.10, 7.38, 5.35, 5.30]
-    lista_data = ['29/05/2021', '30/05/2021', '31/05/2021', '01/06/2021', '02/06/2021']
+    lista_dolar = coins.read_dollar_grafic()[0]
+    lista_data = coins.read_dollar_grafic()[1]
 
     new_data = []
     for i in range(len(lista_dolar)):
         new_data.append([lista_data[i],lista_dolar[i]])
+
+    data_ajust = []
+    if len(new_data) >= 5:
+        data_ajust = new_data[(len(new_data)-5):len(new_data)]
 
     #-------------------------------
 
 
-    return render_template('coin/index-coin.html', new_data=new_data, title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass, data_table=data_table, tables=[df.to_html(classes='data')], titles=df.columns.values)
+    return render_template('coin/index-coin.html', new_data=data_ajust, title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass, data_table=data_table, tables=[df.to_html(classes='data')], titles=df.columns.values)
 
 
-@app.route("/coin_show")
-def coin_show():
-
-    title_status= 'COINS'
-    lista = requests.get('https://economia.awesomeapi.com.br/all')
-    cotation = json.loads(lista.text)
-
-    df = coins.cotation_all(cotation)
-    now = date.today()
-    list_today = coins.today_is(now)
-
-    hj = now
-
-    day_week = list_today[0]
-    day =  list_today[1]
-    year =  list_today[2]
-    month = list_today[3]
-
-    Ass = 'A.M.O COTACÕES'
-
-    lista_dolar = [5.07, 5.10, 7.38, 5.35, 5.30]
-    lista_data = ['29/05/2021', '30/05/2021', '31/05/2021', '01/06/2021', '02/06/2021']
-
-    new_data = []
-    for i in range(len(lista_dolar)):
-        new_data.append([lista_data[i],lista_dolar[i]])
-
-    print('>>>',new_data, end=' ')
-
-    return render_template('coin/coin-show.html', new_data=new_data, title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass)
 
 @app.route("/atualyze_table")
 def atualyze_table():
@@ -304,24 +280,32 @@ def atualyze_table():
 
     Ass = 'A.M.O COTACÕES'
 
+    coins.dollar_last_days(df)
+
+
     data_table = []
     for a in range(len(df['VALOR'])):
         data_table.append([df['MOEDA'].loc[a], df['VALOR'].loc[a], df['DATA_COTA'].loc[a]])
 
     #-------------------------------
-    lista_dolar = [5.11, 5.09, 5.12, 5.08, 5.07]
-    lista_data = ['29/05/2021', '30/05/2021', '31/05/2021', '01/06/2021', '02/06/2021']
+    lista_dolar = coins.read_dollar_grafic()[0]
+    lista_data = coins.read_dollar_grafic()[1]
 
-    new_data = []
+    new_data, new_ = [],[]
     for i in range(len(lista_dolar)):
         new_data.append([lista_data[i],lista_dolar[i]])
+        new_.append([lista_data[i],lista_dolar[i]])
+
+    data_ajust = []
+    if len(new_data) >= 5:
+        data_ajust = new_data[(len(new_data)-5):len(new_data)]
 
     #-------------------------------
-    xx = coins.dollar_last_days(df)
+    return render_template('coin/index-coin.html', new_=new_, new_data=data_ajust, title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass, data_table=data_table, tables=[df.to_html(classes='data')], titles=df.columns.values)
 
-    print(xx)
 
-    return render_template('coin/index-coin.html', new_data=new_data, title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass, data_table=data_table, tables=[df.to_html(classes='data')], titles=df.columns.values)
+    #-------------------------------
+    #xx = coins.dollar_last_days(df)
 
 
     
