@@ -259,58 +259,6 @@ def index_coin():
 
 
 
-@app.route("/atualyze_table")
-def atualyze_table():
-
-    title_status= 'COINS'
-
-    lista = requests.get('https://economia.awesomeapi.com.br/all')
-    cotation = json.loads(lista.text)
-
-    df = coins.cotation_all(cotation)
-    now = date.today()
-    list_today = coins.today_is(now)
-
-    hj = now
-
-    day_week = list_today[0]
-    day =  list_today[1]
-    year =  list_today[2]
-    month = list_today[3]
-
-    Ass = 'A.M.O COTACÕES'
-
-    coins.dollar_last_days(df)
-
-
-    data_table = []
-    for a in range(len(df['VALOR'])):
-        data_table.append([df['MOEDA'].loc[a], df['VALOR'].loc[a], df['DATA_COTA'].loc[a]])
-
-    #-------------------------------
-    lista_dolar = coins.read_dollar_grafic()[0]
-    lista_data = coins.read_dollar_grafic()[1]
-
-    new_data, new_ = [],[]
-    for i in range(len(lista_dolar)):
-        new_data.append([lista_data[i],lista_dolar[i]])
-        new_.append([lista_data[i],lista_dolar[i]])
-
-    data_ajust = []
-    if len(new_data) >= 5:
-        data_ajust = new_data[(len(new_data)-5):len(new_data)]
-
-    #-------------------------------
-    return render_template('coin/index-coin.html', new_=new_, new_data=data_ajust, title_status=title_status, day_week=day_week, day=day, month=month, year=year, hj=hj, Ass=Ass, data_table=data_table, tables=[df.to_html(classes='data')], titles=df.columns.values)
-
-
-    #-------------------------------
-    #xx = coins.dollar_last_days(df)
-
-
-    
-
-
 #---------------------------------------------------------------------------------
 #-----------------------------
 db_i = TinyDB('DB_JSON/dbi.json')
